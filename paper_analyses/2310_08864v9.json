@@ -1,0 +1,29 @@
+{
+  "arxiv_id": "2310.08864v9",
+  "title_zh": "Open X-Embodiment：机器人学习数据集与RT-X模型",
+  "one_sentence_summary": "构建跨22种机器人的标准化大规模数据集，训练通用跨机器人策略RT-X并验证正迁移效果。",
+  "key_contributions": [
+    "贡献1：联合21家机构构建了包含22种机器人、527种技能的大规模标准化机器人操作数据集Open X-Embodiment",
+    "贡献2：提出RT-X模型（RT-1-X和RT-2-X），证明在多机器人异构数据上训练的通用策略能实现跨机器人正迁移",
+    "贡献3：建立了标准化数据格式（基于RLDS）和开源数据基础设施，为机器人学习领域的数据共享与模型整合奠定基础"
+  ],
+  "technical_approach": "基于两种架构训练跨机器人通用策略：RT-1-X沿用RT-1的Transformer架构，将FiLM EfficientNet作为视觉编码器处理图像，结合语言指令tokens输入Transformer解码动作；RT-2-X基于RT-2的视觉-语言-动作模型，利用预训练视觉语言模型（PaLI-X 55B）将动作表示为文本tokens，通过大规模互联网预训练知识增强泛化能力。两者均在Open X-Embodiment数据集上进行混合训练，使用精心设计的数据混合比例策略，对不同机器人数据进行加权采样，以实现跨embodiment的知识迁移。",
+  "datasets_and_benchmarks": [
+    "Open X-Embodiment Dataset（22种机器人、21家机构、527种技能、160266个任务）",
+    "RLDS标准化数据格式",
+    "RT-1机器人评估基准",
+    "WidowX机器人Bridge V2评估基准"
+  ],
+  "key_results": "RT-1-X在RT-1评估机器人上比原始RT-1策略平均成功率提升约50%；RT-2-X在相同评估设置上比原始RT-2提升约3倍成功率。在WidowX机器人上，RT-2-X也展现出显著的正迁移效果，证明跨embodiment数据训练能有效提升单一机器人性能。",
+  "limitations": "数据集以抓取操作为主，灵巧操作和移动操作覆盖不足；跨embodiment迁移的理论理解有限；评估仅限于少数机器人平台。",
+  "connections_to_vla": "本工作是VLA模型发展的关键里程碑：RT-2-X直接扩展了RT-2的VLA架构至跨机器人场景，验证了VLA模型通过大规模异构数据实现泛化的可行性。Open X-Embodiment数据集成为后续Octo、RT-H等VLA模型的重要训练和评估资源，推动了通用机器人基础模型的研究范式。",
+  "survey_theme": "数据与基准",
+  "importance_score": 5,
+  "keywords": [
+    "Open X-Embodiment",
+    "跨机器人迁移",
+    "RT-X",
+    "大规模机器人数据集",
+    "通用机器人策略"
+  ]
+}

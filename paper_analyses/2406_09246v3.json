@@ -1,0 +1,32 @@
+{
+  "arxiv_id": "2406.09246v3",
+  "title_zh": "OpenVLA：一个开源的视觉-语言-动作模型",
+  "one_sentence_summary": "开源7B参数VLA模型，基于97万真实机器人演示训练，超越闭源RT-2-X。",
+  "key_contributions": [
+    "贡献1：发布了首个大规模开源VLA模型OpenVLA（7B参数），基于970k真实机器人演示在Open X-Embodiment数据集上训练，性能超越55B参数的闭源RT-2-X模型16.5%",
+    "贡献2：系统探索了VLA模型的高效微调方法，证明通过LoRA等低秩适配方法可在消费级GPU上微调，并通过量化实现高效推理而不损失性能",
+    "贡献3：展示了微调后的OpenVLA在多任务环境中具有强大的泛化能力和语言接地能力，超越从零训练的Diffusion Policy等方法20.4%，并开源了完整代码、模型检查点和微调教程"
+  ],
+  "technical_approach": "OpenVLA基于Llama 2 7B语言模型作为骨干，视觉编码器融合了DINOv2和SigLIP两个预训练视觉模型的特征，通过投影层将视觉token映射到语言模型的输入空间。模型将机器人动作离散化为token，以自回归方式预测动作序列，实现端到端的视觉运动控制。训练数据来自Open X-Embodiment数据集中精心筛选的970k条真实机器人演示，覆盖多种机器人平台和任务。创新点包括：(1)双视觉编码器融合，结合DINOv2的空间特征和SigLIP的语义特征；(2)大规模多样化数据训练提升泛化能力；(3)系统验证LoRA微调和量化推理策略，降低部署门槛。",
+  "datasets_and_benchmarks": [
+    "Open X-Embodiment",
+    "BridgeData V2",
+    "Google RT任务套件（29个任务）",
+    "WidowX机器人评估环境"
+  ],
+  "key_results": "OpenVLA在29个任务和多个机器人平台上以7B参数超越55B的RT-2-X 16.5%的绝对成功率；微调后在多任务环境中超越Diffusion Policy 20.4%；通过LoRA微调可在单张消费级GPU上运行；4-bit量化推理不影响下游任务成功率。",
+  "limitations": "仅支持单帧观测，缺乏历史信息建模；动作空间为离散化token，精度受限；推理速度受限于自回归生成，实时性不足。",
+  "connections_to_vla": "OpenVLA直接继承RT-2的VLA范式，将视觉-语言预训练模型迁移至机器人动作生成。与RT-1、RT-2、RT-2-X形成对比，是该方向首个全面开源的工作，显著降低了VLA研究门槛。与Octo等开源通用策略互补，为后续π0、OpenVLA-OFT等改进工作奠定基础。",
+  "survey_theme": "VLA核心架构",
+  "importance_score": 5,
+  "keywords": [
+    "VLA",
+    "开源模型",
+    "机器人操作",
+    "微调",
+    "Open X-Embodiment",
+    "Llama 2",
+    "DINOv2",
+    "SigLIP"
+  ]
+}

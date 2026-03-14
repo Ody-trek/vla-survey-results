@@ -1,0 +1,29 @@
+{
+  "arxiv_id": "2304.13705v1",
+  "title_zh": "使用低成本硬件学习精细双臂操作",
+  "one_sentence_summary": "提出低成本双臂遥操作系统ALOHA与ACT算法，实现精细操作的端到端模仿学习。",
+  "key_contributions": [
+    "贡献1：设计了低成本（约2万美元）的双臂遥操作硬件系统ALOHA，支持精细双臂操作的数据采集",
+    "贡献2：提出Action Chunking with Transformers（ACT）算法，通过动作序列的生成式建模解决模仿学习中的复合误差和非平稳人类示范问题",
+    "贡献3：仅需约10分钟的人类示范，在6个高难度精细操作任务上实现80-90%的成功率，验证了低成本硬件+学习的可行性"
+  ],
+  "technical_approach": "ACT算法基于CVAE（条件变分自编码器）和Transformer架构。编码器将当前观测和动作序列编码为潜在变量z，解码器以z、当前关节位置和多视角图像（通过ResNet18提取特征）为条件，使用Transformer解码器预测未来一段连续动作序列（action chunking）。Action chunking通过一次性预测多步动作来减少复合误差，同时采用时间集成（temporal ensembling）对重叠预测取指数加权平均以平滑执行。训练时使用CVAE的KL散度正则化捕捉人类示范中的多模态性，推理时z设为先验均值。整体为端到端视觉运动策略，直接从图像到关节位置。",
+  "datasets_and_benchmarks": [
+    "自建6个真实世界精细双臂操作任务（开调料杯、穿扎带、装电池等）",
+    "自建模拟环境用于消融实验（Transfer Cube、Insertion）"
+  ],
+  "key_results": "在6个真实世界任务上，ACT以50次示范达到平均80-90%成功率。例如开调料杯成功率90%，穿扎带成功率80%，装电池成功率80%。在模拟实验中，ACT显著优于基线方法（VINN、BCRNN等），Transfer Cube任务成功率96% vs 60%以下。Action chunking和temporal ensembling均被验证为关键设计。",
+  "limitations": "依赖固定摄像头视角，任务多为桌面级操作，泛化到新物体和新场景能力有限，缺乏语言条件化的多任务能力。",
+  "connections_to_vla": "ACT是VLA领域中操作策略学习的重要基础工作。其action chunking思想被后续RT-2、Octo、π0等VLA模型广泛采用。ALOHA硬件系统也为后续Mobile ALOHA及Google等大规模数据采集提供了低成本方案，推动了VLA训练数据的规模化。",
+  "survey_theme": "操作策略学习",
+  "importance_score": 5,
+  "keywords": [
+    "ACT",
+    "ALOHA",
+    "action chunking",
+    "模仿学习",
+    "双臂操作",
+    "Transformer",
+    "低成本硬件"
+  ]
+}

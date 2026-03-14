@@ -1,0 +1,27 @@
+{
+  "arxiv_id": "2603.12144v1",
+  "title_zh": "O3N：全向开放词汇占据预测",
+  "one_sentence_summary": "提出首个纯视觉端到端全向开放词汇3D占据预测框架O3N，实现360°场景理解。",
+  "key_contributions": [
+    "贡献1：提出Polar-spiral Mamba（PsM）模块，通过极坐标螺旋拓扑嵌入全向体素，实现360°连续空间表示与长程上下文建模",
+    "贡献2：设计Occupancy Cost Aggregation（OCA）模块，在体素空间中统一几何与语义监督，确保重建几何与语义结构一致性",
+    "贡献3：提出Natural Modality Alignment（NMA）无梯度对齐路径，建立像素-体素-文本一致表示三元组，实现开放词汇语义扩展"
+  ],
+  "technical_approach": "O3N是一个纯视觉端到端全向开放词汇占据预测框架。核心包括三个模块：(1) Polar-spiral Mamba（PsM）模块将全向体素按极坐标螺旋拓扑排列，利用Mamba的状态空间模型高效建模360°范围内的长程空间依赖；(2) Occupancy Cost Aggregation（OCA）模块通过代价聚合机制在体素空间中统一几何占据与语义分类的监督信号，确保几何结构与语义标签的一致性；(3) Natural Modality Alignment（NMA）模块建立无梯度的视觉特征、体素嵌入与文本语义之间的对齐通路，形成像素-体素-文本表示三元组，支持开放词汇的语义识别。整体框架以全向（如环视/鱼眼）图像为输入，无需LiDAR等额外传感器。",
+  "datasets_and_benchmarks": [
+    "QuadOcc",
+    "Human360Occ"
+  ],
+  "key_results": "在QuadOcc和Human360Occ两个基准上取得了state-of-the-art性能，同时展现出显著的跨场景泛化能力和语义可扩展性，能处理训练分布之外的开放词汇语义类别。",
+  "limitations": "仅依赖纯视觉输入，在极端光照或遮挡条件下可能性能受限；开放词汇泛化的上界受限于文本-视觉对齐质量。",
+  "connections_to_vla": "O3N为具身智能体提供全向3D场景理解能力，是具身感知的关键基础模块。其开放词汇特性使智能体能在开放世界中识别未见类别，可作为VLA模型中视觉表示与场景理解的前端，支撑下游的导航与操作决策。",
+  "survey_theme": "视觉表示学习",
+  "importance_score": 3,
+  "keywords": [
+    "3D占据预测",
+    "开放词汇",
+    "全向感知",
+    "Mamba",
+    "具身智能"
+  ]
+}

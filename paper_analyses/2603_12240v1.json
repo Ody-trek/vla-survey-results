@@ -1,0 +1,29 @@
+{
+  "arxiv_id": "2603.12240v1",
+  "title_zh": "BiGain：面向联合生成与分类的统一Token压缩框架",
+  "one_sentence_summary": "提出频率感知的token压缩框架，同时保持扩散模型的生成质量与分类能力。",
+  "key_contributions": [
+    "贡献1：提出BiGain，首个同时优化扩散模型生成质量和分类能力的免训练token压缩框架",
+    "贡献2：设计Laplacian门控token合并算子，基于频谱平滑性选择性合并token，保留高对比度的边缘和纹理信息",
+    "贡献3：提出插值-外推KV下采样算子，通过最近邻和平均池化的可控插值/外推下采样key/value，保持注意力精度"
+  ],
+  "technical_approach": "BiGain基于频率分离的核心洞察，将特征空间信号映射到频率感知表示，分离细节信息与全局语义。框架包含两个频率感知算子：(1) Laplacian门控token合并——利用拉普拉斯算子评估token的频谱平滑性，鼓励合并频谱平滑的token，抑制高对比度token的合并，保留边缘和纹理细节；(2) 插值-外推KV下采样——对注意力机制中的key和value通过最近邻与平均池化之间的可控插值/外推进行下采样，同时保持query不变，维持注意力计算精度。该框架为即插即用设计，无需训练，适用于DiT和U-Net架构的扩散模型。",
+  "datasets_and_benchmarks": [
+    "ImageNet-1K",
+    "ImageNet-100",
+    "Oxford-IIIT Pets",
+    "COCO-2017"
+  ],
+  "key_results": "在ImageNet-1K上，对Stable Diffusion 2.0进行70% token合并时，BiGain将分类精度提升7.15%，同时FID改善0.34（1.85%）。在DiT和U-Net两种架构上，BiGain在多个数据集上一致性地改善了扩散模型分类的速度-精度权衡，同时保持或增强生成质量。",
+  "limitations": "仅在扩散模型上验证，未拓展到其他生成模型；评估主要限于图像分类和生成任务，未涉及更复杂的下游应用场景。",
+  "connections_to_vla": "该工作的token压缩与频率感知表示思想可迁移至VLA模型中的视觉编码加速。具身智能系统中扩散模型常用于策略生成，BiGain的免训练加速方案可降低VLA模型中扩散策略的推理成本，同时保持视觉判别能力，对实时机器人部署有潜在价值。",
+  "survey_theme": "视觉表示学习",
+  "importance_score": 2,
+  "keywords": [
+    "扩散模型加速",
+    "token压缩",
+    "频率分离",
+    "token合并",
+    "KV下采样"
+  ]
+}

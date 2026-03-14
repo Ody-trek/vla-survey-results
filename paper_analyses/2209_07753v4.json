@@ -1,0 +1,27 @@
+{
+  "arxiv_id": "2209.07753v4",
+  "title_zh": "代码即策略：用于具身控制的语言模型程序",
+  "one_sentence_summary": "利用大语言模型生成机器人策略代码，实现自然语言到具身控制的映射。",
+  "key_contributions": [
+    "贡献1：提出\"代码即策略\"框架，将LLM代码生成能力重新用于编写机器人控制策略代码，支持反应式策略和基于路径点的策略",
+    "贡献2：引入层次化代码生成（递归定义未定义函数）的提示方法，提升复杂代码生成能力，并在HumanEval基准上达到39.8%的新SOTA",
+    "贡献3：展示了LLM生成的策略代码具备空间几何推理、新指令泛化以及根据上下文推断精确参数值（行为常识）的能力，并在多个真实机器人平台上验证"
+  ],
+  "technical_approach": "该方法利用经过代码补全训练的大语言模型（如Codex），通过few-shot prompting将自然语言指令转化为可执行的机器人策略代码。核心思路是将感知API（如物体检测器输出）和控制原语API作为可用接口暴露给LLM，LLM通过组合这些API调用、利用经典逻辑结构（条件、循环）和第三方数学库（NumPy、Shapely）来生成策略代码。关键创新包括：（1）层次化代码生成——当LLM生成的代码调用了未定义的函数时，递归地提示LLM生成这些子函数的实现；（2）支持生成反应式策略（如阻抗控制器的反馈循环）而非仅限于开环动作序列；（3）通过语言模型的常识推理能力将模糊描述映射为精确数值参数。",
+  "datasets_and_benchmarks": [
+    "HumanEval",
+    "多个真实机器人平台上的自定义任务评估（桌面操作、移动机器人导航等）"
+  ],
+  "key_results": "在HumanEval代码生成基准上，层次化代码生成方法达到39.8%的通过率，刷新当时SOTA。在真实机器人实验中，系统能够在多个平台（UR5e机械臂、移动机器人等）上执行包含空间推理的复杂语言指令，成功完成桌面物体操作、轨迹绘制、基于视觉的pick-and-place等任务，展现了对新指令的泛化能力。",
+  "limitations": "依赖预定义的感知和控制API，LLM可能生成不安全或语义错误的代码，缺乏闭环纠错机制。",
+  "connections_to_vla": "该工作是LLM应用于具身智能的早期代表性工作，与SayCan、Inner Monologue等互补，将LLM从高层任务规划扩展到底层策略生成。它为后续VLA模型提供了\"代码作为动作表示\"的范式启发，影响了如VoxPoser、ProgPrompt等后续工作。与端到端VLA不同，它采用模块化的感知-推理-控制架构。",
+  "survey_theme": "任务规划推理",
+  "importance_score": 5,
+  "keywords": [
+    "Code Generation",
+    "LLM for Robotics",
+    "Embodied Control",
+    "Few-shot Prompting",
+    "Hierarchical Code Generation"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "arxiv_id": "2303.03378v1",
+  "title_zh": "PaLM-E：一种具身多模态语言模型",
+  "one_sentence_summary": "将连续传感器模态直接嵌入大语言模型，实现具身多模态推理与规划。",
+  "key_contributions": [
+    "贡献1：提出将真实世界连续传感信号（视觉、状态估计等）直接注入大语言模型的具身语言模型架构，通过多模态句子（interleaved multi-modal sentences）实现感知与语言的端到端融合。",
+    "贡献2：展示了单一大模型PaLM-E能够跨多种具身任务（机器人操作规划、VQA、图像描述）、多种观测模态和多种机器人本体进行推理，并表现出正向迁移（positive transfer）效应。",
+    "贡献3：最大规模模型PaLM-E-562B在OK-VQA上达到当时最优水平，同时随模型规模增大保留了通用语言能力，证明了大规模联合训练可缓解灾难性遗忘。"
+  ],
+  "technical_approach": "PaLM-E基于预训练大语言模型PaLM，将多种连续模态（RGB图像、场景状态向量、机器人本体状态等）通过可学习的编码器映射为与语言token同一嵌入空间的token序列，形成交错排列的多模态句子作为LLM输入。视觉编码器方面探索了ViT、OSRT（Object Scene Representation Transformer）等架构。模型以自回归方式生成文本输出，用于任务规划（输出子任务指令序列）或回答视觉问题。训练采用端到端方式，在机器人操作、VQA、图像描述等多任务上联合训练。关键创新在于：（1）将grounding问题转化为多模态token序列建模问题；（2）跨互联网规模视觉-语言数据与机器人数据的联合训练带来正向迁移；（3）通过冻结LLM或全参数微调等不同策略探索了训练效率与性能的权衡。",
+  "datasets_and_benchmarks": [
+    "SayCan机器人厨房任务",
+    "Language Table桌面操作任务",
+    "TAMP（Task and Motion Planning）环境",
+    "OK-VQA",
+    "VQAv2",
+    "COCO图像描述"
+  ],
+  "key_results": "PaLM-E-562B在OK-VQA上达到当时SOTA水平。在机器人任务中，单一模型跨多个具身环境成功执行长序操作规划，联合训练相比单任务训练带来显著的正向迁移（如TAMP规划成功率从64%提升至87%）。随模型规模增大，灾难性遗忘现象显著减轻，562B模型几乎完全保留了通用语言能力。",
+  "limitations": "模型规模极大（562B参数），推理成本高；机器人任务评估场景相对有限；不直接输出低级动作控制信号，仍需底层策略执行。",
+  "connections_to_vla": "PaLM-E是VLA模型发展的重要里程碑，开创了将连续感知直接嵌入LLM用于具身推理的范式。它与SayCan互补（SayCan用LLM做高层规划但不接受视觉输入），直接启发了RT-2等后续VLA工作将语言模型扩展为同时输出动作token的端到端策略。其多模态token化和联合训练策略成为后续VLA核心架构的重要基础。",
+  "survey_theme": "基础模型迁移",
+  "importance_score": 5,
+  "keywords": [
+    "具身多模态语言模型",
+    "多模态Grounding",
+    "PaLM-E",
+    "正向迁移",
+    "机器人任务规划",
+    "视觉-语言-动作"
+  ]
+}

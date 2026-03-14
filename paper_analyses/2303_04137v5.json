@@ -1,0 +1,29 @@
+{
+  "arxiv_id": "2303.04137v5",
+  "title_zh": "扩散策略：通过动作扩散进行视觉运动策略学习",
+  "one_sentence_summary": "将条件去噪扩散过程引入机器人视觉运动策略，实现多模态动作生成。",
+  "key_contributions": [
+    "贡献1：提出将扩散模型作为机器人视觉运动策略的核心生成框架，天然支持多模态动作分布建模",
+    "贡献2：引入关键技术设计包括滚动时域控制（receding horizon control）、视觉条件化机制以及时间序列扩散Transformer（Diffusion Transformer）架构",
+    "贡献3：在4个基准的12个任务上系统验证，平均超越现有最优方法46.9%，并在真实机器人上完成部署验证"
+  ],
+  "technical_approach": "Diffusion Policy将机器人策略表示为条件去噪扩散过程：以视觉观测为条件，从高斯噪声出发，通过迭代去噪生成动作序列。模型学习动作分布的得分函数梯度，推理时通过随机Langevin动力学逐步优化。架构上提出两种实现：基于CNN的条件U-Net和基于Transformer的时间序列扩散Transformer。关键设计包括：(1)预测动作序列而非单步动作，结合滚动时域控制实现时间一致性；(2)通过FiLM条件化或cross-attention将视觉特征注入扩散过程；(3)采用DDPM/DDIM加速采样。该方法无需显式定义动作空间结构，自然处理高维和多模态分布。",
+  "datasets_and_benchmarks": [
+    "Robomimic",
+    "Push-T",
+    "Block Pushing (IBC benchmark)",
+    "Franka Kitchen (RELAY benchmark)"
+  ],
+  "key_results": "在12个任务上平均成功率超越现有SOTA方法46.9%。在Push-T任务中达到最高覆盖率，在Robomimic的Transport和Can等任务中显著优于BC-RNN、IBC、BET等方法。CNN和Transformer两种架构均表现优异，真实机器人实验验证了方法的实际可部署性。",
+  "limitations": "推理速度受限于多步去噪迭代；对扩散步数和时域长度等超参数敏感；未充分探索语言条件化的泛化能力。",
+  "connections_to_vla": "Diffusion Policy是VLA模型动作生成头的重要基础，后续RT-2、Octo、π0等VLA工作广泛采用扩散策略作为动作解码模块。该工作证明了扩散模型在处理机器人多模态动作分布上的优越性，为将大规模生成模型能力迁移到具身智能策略学习提供了关键技术路径。",
+  "survey_theme": "操作策略学习",
+  "importance_score": 5,
+  "keywords": [
+    "Diffusion Policy",
+    "扩散模型",
+    "视觉运动策略",
+    "多模态动作分布",
+    "机器人操作"
+  ]
+}
