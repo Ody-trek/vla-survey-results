@@ -1,0 +1,26 @@
+{
+  "arxiv_id": "2603.11647v1",
+  "title_zh": "OmniForcing：释放实时联合音视频生成能力",
+  "one_sentence_summary": "将双流双向扩散模型蒸馏为流式自回归生成器，实现实时音视频联合生成。",
+  "key_contributions": [
+    "贡献1：提出OmniForcing，首个将离线双流双向扩散模型蒸馏为高保真流式自回归生成器的框架",
+    "贡献2：设计非对称块因果对齐（Asymmetric Block-Causal Alignment）与零截断全局前缀（Global Prefix）机制，解决模态间时间不对称和多模态同步漂移问题",
+    "贡献3：提出Audio Sink Token机制与Identity RoPE约束解决音频token稀疏导致的梯度爆炸，以及Joint Self-Forcing Distillation范式动态自纠正跨模态累积误差"
+  ],
+  "technical_approach": "OmniForcing基于双流双向音视频扩散模型，将其蒸馏为流式自回归生成器。核心创新包括：(1) 非对称块因果对齐（Asymmetric Block-Causal Alignment），配合零截断全局前缀，弥合音频与视频之间的信息密度差异，防止多模态同步漂移；(2) Audio Sink Token机制结合Identity RoPE约束，解决因果转换过程中音频token极端稀疏引发的梯度爆炸问题；(3) Joint Self-Forcing Distillation范式，使模型在长序列生成中能动态自纠正由曝光偏差引起的跨模态累积误差；(4) 模态独立的滚动KV-cache推理方案，实现单GPU上约25 FPS的实时流式生成。",
+  "datasets_and_benchmarks": [
+    "未在摘要中明确提及具体数据集和基准"
+  ],
+  "key_results": "在单GPU上实现约25 FPS的流式音视频联合生成，达到SOTA水平，多模态同步性和视觉质量与双向教师模型相当。",
+  "limitations": "摘要未详述具体局限；可能受限于教师模型能力上限，长视频生成的质量衰减及计算资源需求仍需验证。",
+  "connections_to_vla": "该工作将多模态扩散模型蒸馏为实时流式生成系统，其音视频同步生成、因果推理和低延迟特性对具身智能中实时多模态感知与交互场景（如机器人环境音视频理解与生成、仿真数据合成）有潜在借鉴价值。",
+  "survey_theme": "音视频多模态融合",
+  "importance_score": 4,
+  "keywords": [
+    "音视频联合生成",
+    "扩散模型蒸馏",
+    "流式自回归",
+    "多模态同步",
+    "实时推理"
+  ]
+}

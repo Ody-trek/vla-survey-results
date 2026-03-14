@@ -1,0 +1,26 @@
+{
+  "arxiv_id": "2603.11661v1",
+  "title_zh": "Resonate：通过大型音频语言模型的在线反馈强化文本到音频生成",
+  "one_sentence_summary": "将在线GRPO强化学习与音频语言模型奖励引入文本到音频生成，实现新SOTA。",
+  "key_contributions": [
+    "贡献1：首次将在线Group Relative Policy Optimization (GRPO)算法应用于基于Flow Matching的文本到音频生成模型",
+    "贡献2：引入大型音频语言模型（LALMs）作为奖励函数，提供比CLAP更细粒度、更贴近人类感知的评分信号",
+    "贡献3：仅用470M参数的Resonate模型在TTA-Bench上取得音频质量和语义对齐双维度的新SOTA"
+  ],
+  "technical_approach": "Resonate基于Flow Matching架构的文本到音频生成模型，将GRPO在线强化学习算法适配到连续音频生成场景。不同于以往使用离线DPO或CLAP模型作为奖励的方法，本文采用在线RL范式，在训练过程中实时采样生成音频并获取反馈。核心创新在于利用大型音频语言模型（LALMs）提供奖励信号，LALMs能够对生成音频进行细粒度的质量与语义一致性评估，相比CLAP提供更丰富且更符合人类感知的评分。GRPO通过组内相对排序进行策略优化，避免了额外价值网络的需求，降低了训练复杂度。",
+  "datasets_and_benchmarks": [
+    "TTA-Bench"
+  ],
+  "key_results": "Resonate仅470M参数，在TTA-Bench上取得文本到音频生成的新SOTA，在音频质量和语义对齐两个维度均优于现有方法。实验证明在线GRPO显著优于离线DPO等方法，且LALM奖励优于传统CLAP奖励。",
+  "limitations": "仅在TTA-Bench上验证，模型规模较小，对LALM奖励模型的依赖可能引入偏差，泛化性待验证。",
+  "connections_to_vla": "该工作将LLM领域的GRPO强化学习方法迁移到音频生成，与VLA中利用语言模型反馈优化策略的思路一致。音频生成能力可为具身智能提供环境音效模拟与多模态交互支持，LALM作为奖励模型的范式也可借鉴到VLA的奖励设计中。",
+  "survey_theme": "音频生成与合成",
+  "importance_score": 4,
+  "keywords": [
+    "文本到音频生成",
+    "GRPO",
+    "强化学习",
+    "音频语言模型",
+    "Flow Matching"
+  ]
+}

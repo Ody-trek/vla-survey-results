@@ -1,0 +1,26 @@
+{
+  "arxiv_id": "2603.12206v1",
+  "title_zh": "CLASP：防御混合大语言模型中的隐藏状态投毒攻击",
+  "one_sentence_summary": "提出CLASP模型，通过分析Mamba块输出嵌入检测隐藏状态投毒攻击。",
+  "key_contributions": [
+    "贡献1：将隐藏状态投毒攻击（HiSPA）的缓解问题形式化为token级二分类任务",
+    "贡献2：提出CLASP模型，利用Mamba块输出嵌入（BOE）的独特模式结合XGBoost分类器检测恶意token",
+    "贡献3：在2483份简历（950万token）的真实场景数据集上验证了高检测性能和对未见攻击模式的泛化能力"
+  ],
+  "technical_approach": "CLASP针对状态空间模型（SSM）如Mamba的隐藏状态投毒攻击（HiSPA）进行防御。核心思路是提取Mamba各层的块输出嵌入（Block Output Embeddings, BOE），发现恶意token在BOE空间中呈现可区分的模式。基于这些特征，使用轻量级的XGBoost分类器对每个token进行二分类（恶意/正常）。该方法独立于下游模型运行，不需要修改原始LLM架构。在简历筛选这一实际应用场景下进行评估，采用受控注入方式构建带标注的数据集，并通过留一交叉验证和聚类交叉验证测试泛化能力。",
+  "datasets_and_benchmarks": [
+    "2483份简历语料库（共950万token，含受控恶意注入）"
+  ],
+  "key_results": "CLASP在token级F1达95.9%，文档级F1达99.3%。留一交叉验证下文档级F1为96.9%，面对结构性新颖触发器的聚类交叉验证下平均文档级F1仍达91.6%。处理速度1032 token/秒，VRAM消耗不到4GB。",
+  "limitations": "仅在简历筛选场景验证，攻击类型和应用领域的覆盖面有限，依赖Mamba特定的BOE特征。",
+  "connections_to_vla": "该工作关注SSM/Mamba架构的安全性，而Mamba等SSM模型因高效序列建模能力正被探索用于VLA模型中的序列决策和动作生成模块。该防御方法对保障基于SSM的具身智能系统安全性具有潜在参考价值。",
+  "survey_theme": "音频大语言模型",
+  "importance_score": 1,
+  "keywords": [
+    "状态空间模型",
+    "Mamba",
+    "隐藏状态投毒攻击",
+    "对抗防御",
+    "XGBoost"
+  ]
+}

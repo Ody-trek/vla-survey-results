@@ -1,0 +1,35 @@
+{
+  "arxiv_id": "2212.04356v1",
+  "title_zh": "通过大规模弱监督实现鲁棒语音识别",
+  "one_sentence_summary": "利用68万小时多语言网络音频弱监督训练，实现零样本鲁棒语音识别。",
+  "key_contributions": [
+    "贡献1：构建了包含68万小时多语言、多任务的大规模弱监督语音数据集，覆盖99种语言",
+    "贡献2：提出Whisper模型，基于encoder-decoder Transformer架构，在零样本设置下达到接近甚至匹敌全监督模型的性能",
+    "贡献3：展示了大规模弱监督训练在语音识别中的强泛化能力和鲁棒性，接近人类水平的准确率与鲁棒性"
+  ],
+  "technical_approach": "Whisper采用标准的encoder-decoder Transformer架构，输入为80通道的log-Mel频谱图（30秒窗口），经encoder编码后由decoder自回归生成文本。训练数据来自互联网上68万小时的音频-文本对，涵盖多语言转录、翻译等多任务。通过特殊token序列设计统一多任务格式，包括语言识别、时间戳预测、语音转录和翻译等。模型规模从39M到1550M参数不等，采用大规模弱监督（而非自监督或精标注监督）策略，利用数据规模和多样性获得强泛化与鲁棒性，无需针对特定数据集微调即可实现零样本迁移。",
+  "datasets_and_benchmarks": [
+    "LibriSpeech",
+    "Common Voice",
+    "TED-LIUM",
+    "Fleurs",
+    "VoxPopuli",
+    "CoVoST 2",
+    "GigaSpeech",
+    "Switchboard",
+    "CHiME-6",
+    "内部68万小时网络音频数据集"
+  ],
+  "key_results": "Whisper Large-v2在LibriSpeech test-clean上零样本WER达到约2.7%，接近全监督SOTA。在多个分布外测试集上表现出极强鲁棒性，有效缩小了与人类表现的差距。支持99种语言的多语言语音识别和X→English的语音翻译任务。",
+  "limitations": "对某些低资源语言性能仍有限，长音频处理存在幻觉问题，实时性不足，推理计算成本较高。",
+  "connections_to_vla": "Whisper作为强大的语音感知基础模型，为VLA系统中的语音指令理解提供了关键能力。具身智能系统可借助Whisper实现鲁棒的多语言语音命令解析，将人类语音指令转化为文本后供语言模型处理，是多模态具身交互中语音通道的重要基础组件。",
+  "survey_theme": "语音识别与处理",
+  "importance_score": 5,
+  "keywords": [
+    "Whisper",
+    "弱监督语音识别",
+    "零样本迁移",
+    "多语言",
+    "鲁棒语音识别"
+  ]
+}

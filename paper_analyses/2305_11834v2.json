@@ -1,0 +1,41 @@
+{
+  "arxiv_id": "2305.11834v2",
+  "title_zh": "Pengi：面向音频任务的音频语言模型",
+  "one_sentence_summary": "提出Pengi模型，将所有音频任务统一为文本生成任务，实现通用音频理解。",
+  "key_contributions": [
+    "贡献1：提出将所有音频任务（开放式和封闭式）统一建模为文本生成任务的框架，无需任务特定微调",
+    "贡献2：设计了音频编码器与文本编码器联合生成前缀、提示冻结预训练语言模型的统一架构",
+    "贡献3：在22个下游任务上进行评估，多项任务达到SOTA性能，验证了音频-语言模型连接的有效性"
+  ],
+  "technical_approach": "Pengi采用音频编码器将输入音频转换为连续嵌入序列，文本编码器将文本输入编码为嵌入序列，两者拼接作为前缀（prefix）来提示一个预训练的冻结语言模型（GPT-2），生成自由形式的文本输出。该方法基于迁移学习，利用预训练的音频编码器（如HTSAT、CLAP等）和冻结的语言模型，通过前缀映射网络对齐音频与语言空间。这种统一架构使模型能同时处理音频描述、音频问答等开放式任务和音频分类、声音事件检测等封闭式任务，无需额外的任务特定扩展模块。训练策略涉及将封闭式任务转化为文本提示-回答对的形式进行多任务联合训练。",
+  "datasets_and_benchmarks": [
+    "AudioCaps",
+    "Clotho",
+    "AudioSet",
+    "ESC-50",
+    "UrbanSound8K",
+    "FSD50K",
+    "DCASE",
+    "TUT Acoustic Scenes",
+    "Beijing Opera",
+    "CREMA-D",
+    "GTZAN",
+    "Medley-solos-DB",
+    "MUSDB18",
+    "NSynth",
+    "VocalSound",
+    "LibriSpeech"
+  ],
+  "key_results": "在22个下游任务评估中，Pengi在多个任务上达到SOTA或接近SOTA性能，包括音频描述（AudioCaps、Clotho）和多种音频分类任务。该模型展示了单一模型处理多种异质音频任务的能力，证明了将语言模型与音频模型连接是迈向通用音频理解的重要一步。",
+  "limitations": "依赖冻结LM限制了生成能力；音频编码器的表征瓶颈影响细粒度理解；缺乏实时交互能力。",
+  "connections_to_vla": "Pengi展示了将感知模态（音频）与语言模型连接的范式，与VLA中视觉-语言-动作的多模态融合思想一致。其前缀提示冻结LM的架构启发了具身智能中将多模态感知输入转化为语言空间进行推理和决策的技术路线，为具身Agent的听觉理解提供了基础。",
+  "survey_theme": "音频大语言模型",
+  "importance_score": 4,
+  "keywords": [
+    "Audio Language Model",
+    "多任务统一建模",
+    "文本生成",
+    "迁移学习",
+    "音频理解"
+  ]
+}

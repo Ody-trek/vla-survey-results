@@ -1,0 +1,28 @@
+{
+  "arxiv_id": "2106.13043v1",
+  "title_zh": "AudioCLIP：将CLIP扩展到图像、文本和音频",
+  "one_sentence_summary": "将CLIP模型扩展至音频模态，实现图像-文本-音频三模态联合表示与零样本分类。",
+  "key_contributions": [
+    "贡献1：提出AudioCLIP，将ESResNeXt音频模型集成到CLIP框架中，构建图像-文本-音频三模态联合嵌入空间",
+    "贡献2：在环境声音分类任务上取得新SOTA，UrbanSound8K达90.07%，ESC-50达97.15%",
+    "贡献3：首次在环境声音分类任务上建立零样本基线，并展示跨模态检索能力"
+  ],
+  "technical_approach": "AudioCLIP在预训练的CLIP模型基础上，引入ESResNeXt作为音频编码器，利用AudioSet数据集进行训练。模型通过对比学习将音频、图像和文本映射到统一的嵌入空间，使用三对模态间的对比损失（音频-文本、音频-图像、图像-文本）进行联合优化。训练策略包括完全训练（同时微调CLIP和ESResNeXt）和部分训练（仅训练音频分支）两种模式。该方法继承了CLIP的零样本泛化能力，使音频模态也能进行零样本分类和跨模态查询。",
+  "datasets_and_benchmarks": [
+    "AudioSet",
+    "UrbanSound8K",
+    "ESC-50"
+  ],
+  "key_results": "在ESC任务中，UrbanSound8K监督分类准确率90.07%，ESC-50达97.15%，均为SOTA。零样本分类在UrbanSound8K上68.78%，ESC-50上69.40%，建立了新的基线。同时展示了音频-图像-文本跨模态检索的能力。",
+  "limitations": "依赖AudioSet数据集质量，零样本性能与监督方法仍有较大差距，音频编码器选择较为单一。",
+  "connections_to_vla": "AudioCLIP将音频纳入多模态对齐框架，为具身智能提供了环境声音感知能力。机器人在真实环境中需要理解声音信号，AudioCLIP的三模态联合嵌入为VLA模型整合听觉信息提供了基础范式，启发了后续将更多感知模态融入统一表示空间的研究。",
+  "survey_theme": "音频-语言对齐与理解",
+  "importance_score": 4,
+  "keywords": [
+    "AudioCLIP",
+    "多模态对比学习",
+    "音频-语言对齐",
+    "零样本分类",
+    "环境声音分类"
+  ]
+}

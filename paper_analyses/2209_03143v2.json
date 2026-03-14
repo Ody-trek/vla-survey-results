@@ -1,0 +1,31 @@
+{
+  "arxiv_id": "2209.03143v2",
+  "title_zh": "AudioLM：一种基于语言建模的音频生成方法",
+  "one_sentence_summary": "将音频映射为离散token序列，以语言建模方式生成高质量、长期一致的音频。",
+  "key_contributions": [
+    "贡献1：提出AudioLM框架，将音频生成任务转化为离散token序列上的语言建模任务，无需文本标注即可生成连贯音频",
+    "贡献2：提出混合token化方案，结合自监督语音模型（w2v-BERT）的语义token与神经音频编解码器（SoundStream）的声学token，兼顾长期结构一致性与高保真合成质量",
+    "贡献3：在语音和钢琴音乐上验证了框架的通用性，生成的语音在语法、语义、说话人身份和韵律方面均表现出色，钢琴音乐也保持了和声与节奏连贯性"
+  ],
+  "technical_approach": "AudioLM采用分层的离散token表示与自回归语言模型架构。首先，利用在音频上预训练的掩码语言模型（w2v-BERT）提取语义token，捕获音频的长期结构和语言内容；同时利用神经音频编解码器SoundStream产生多层级声学token，保留细粒度声学细节。生成过程分为三个阶段：（1）基于语义token的自回归生成，确保语言和结构一致性；（2）从语义token到粗粒度声学token的映射；（3）从粗粒度到细粒度声学token的上采样，逐步提升音频质量。所有阶段均采用Transformer解码器进行自回归建模，模型在大规模原始音频波形上训练，无需转录或符号标注。",
+  "datasets_and_benchmarks": [
+    "LibriLight (60k小时无标注英语语音)",
+    "MAESTRO (钢琴音乐数据集)",
+    "MOS主观评估",
+    "FID (Fréchet Inception Distance)",
+    "sWUGGY/sBLIMP (语言能力评估)"
+  ],
+  "key_results": "在语音生成中，人类评估者难以区分AudioLM生成的语音与真实语音（MOS接近），sWUGGY和sBLIMP测试表明生成语音具备合理的词汇和语法能力。在钢琴音乐生成中，评估者仅约51%的概率能正确区分生成与真实音乐，接近随机猜测水平。",
+  "limitations": "生成速度较慢，依赖多阶段自回归推理；未探索条件生成（如文本到音频）；语义token依赖预训练模型。",
+  "connections_to_vla": "AudioLM将音频tokenize后以语言建模方式生成的范式，为VLA模型中的多模态token统一表示提供了重要参考。其层级化离散表示思路可应用于具身智能中的音频感知与交互，特别是在机器人需要理解和生成环境音频或语音指令的场景中。",
+  "survey_theme": "音频生成与合成",
+  "importance_score": 5,
+  "keywords": [
+    "AudioLM",
+    "音频生成",
+    "离散token",
+    "语言建模",
+    "混合tokenization",
+    "自回归生成"
+  ]
+}

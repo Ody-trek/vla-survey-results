@@ -1,0 +1,28 @@
+{
+  "arxiv_id": "2301.11325v1",
+  "title_zh": "MusicLM：从文本生成音乐",
+  "one_sentence_summary": "提出MusicLM，通过层次化序列到序列建模从文本描述生成高保真音乐。",
+  "key_contributions": [
+    "贡献1：提出MusicLM，将文本条件音乐生成建模为层次化序列到序列任务，生成24kHz高保真音乐且能保持数分钟的一致性",
+    "贡献2：展示了同时以文本和旋律为条件的能力，可将哼唱/口哨旋律按文本描述的风格进行转换",
+    "贡献3：公开发布MusicCaps数据集，包含5500个由人类专家提供丰富文本描述的音乐-文本对，支持未来研究"
+  ],
+  "technical_approach": "MusicLM结合了三个预训练模型的表示：MuLan（音频-文本联合嵌入模型）、w2v-BERT（自监督音频表示模型）和SoundStream（神经音频编解码器）。生成过程采用层次化方法：首先利用MuLan音频token作为语义token，基于MuLan文本嵌入条件生成语义token序列；然后以语义token为条件，逐层生成SoundStream的粗粒度和细粒度声学token，最终由SoundStream解码器合成波形。该架构借鉴了AudioLM的层次化生成框架，并引入MuLan实现文本条件控制。旋律条件通过提取色度特征（chroma features）实现，使模型能在保持旋律结构的同时改变音乐风格。",
+  "datasets_and_benchmarks": [
+    "MusicCaps（5.5k音乐-文本对）",
+    "Free Music Archive (FMA)",
+    "MuLan训练数据集"
+  ],
+  "key_results": "MusicLM在音频质量（Fréchet Audio Distance）和文本描述一致性（MuLan Cycle Consistency）方面均优于此前的基线系统（如Mubert、Riffusion等）。人类评估中，MusicLM在音频质量和文本匹配度上均获得显著优势。模型能生成保持数分钟一致性的24kHz音乐。",
+  "limitations": "存在版权和文化偏见问题；生成质量仍有提升空间，偶尔出现伪影；训练数据的伦理问题限制了模型公开发布。",
+  "connections_to_vla": "MusicLM展示了将语言条件与层次化序列生成结合的有效范式，其文本到动作（音频生成）的条件生成框架与VLA中文本指令到机器人动作的生成具有结构相似性，层次化token生成策略可为VLA的多粒度动作生成提供参考。",
+  "survey_theme": "音频生成与合成",
+  "importance_score": 4,
+  "keywords": [
+    "文本到音乐生成",
+    "层次化序列建模",
+    "MuLan",
+    "AudioLM",
+    "MusicCaps"
+  ]
+}

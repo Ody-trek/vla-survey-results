@@ -1,0 +1,37 @@
+{
+  "arxiv_id": "2310.13289v2",
+  "title_zh": "SALMONN：迈向大语言模型的通用听觉能力",
+  "one_sentence_summary": "提出SALMONN模型，将语音和音频编码器集成到LLM中，实现通用听觉理解。",
+  "key_contributions": [
+    "贡献1：提出首个同时处理语音、音频事件和音乐的多模态大语言模型SALMONN，具备通用听觉能力",
+    "贡献2：采用双编码器架构（Whisper语音编码器+BEATs音频编码器）结合窗口级Q-Former，实现多种音频信号的统一处理",
+    "贡献3：发现并研究了跨模态涌现能力，并提出few-shot activation tuning方法来激活训练中未见的涌现能力"
+  ],
+  "technical_approach": "SALMONN采用双编码器架构，将OpenAI Whisper（语音编码器）和微软BEATs（音频编码器）的输出拼接后，通过窗口级Q-Former（window-level Q-Former）进行特征压缩和对齐，再通过线性层映射到LLM（Vicuna）的输入空间。训练分两阶段：第一阶段冻结编码器和LLM，仅训练Q-Former和线性层进行预训练对齐；第二阶段使用指令微调数据对Q-Former、线性层和LoRA适配的LLM进行联合微调。创新性地提出few-shot activation tuning，用少量样本激活模型的跨模态涌现能力，避免过拟合。",
+  "datasets_and_benchmarks": [
+    "LibriSpeech",
+    "Common Voice",
+    "CoVoST-2",
+    "GigaSpeech",
+    "AISHELL-1",
+    "AudioCaps",
+    "Clotho",
+    "MusicCaps",
+    "MusicQA",
+    "IEMOCAP",
+    "VoxCeleb1",
+    "AIR-Bench"
+  ],
+  "key_results": "SALMONN在多项语音和音频任务上取得竞争性结果，包括ASR（LibriSpeech WER）、语音翻译、音频描述、情感识别、说话人验证等。同时展现出训练未见的涌现能力，如未训练语言的语音翻译、语音槽填充、音频故事生成、语音音频联合推理等。",
+  "limitations": "涌现能力需要额外的few-shot activation tuning来激活；音频处理长度受限；部分任务性能不及专用模型。",
+  "connections_to_vla": "SALMONN为具身智能体提供了通用听觉感知能力，使AI能理解物理世界中的语音指令、环境声音和音乐等多种音频信号，是构建多模态具身智能系统的关键感知模块，与VLA模型中的多模态感知输入形成互补。",
+  "survey_theme": "音频大语言模型",
+  "importance_score": 4,
+  "keywords": [
+    "音频大语言模型",
+    "多模态融合",
+    "通用听觉理解",
+    "涌现能力",
+    "双编码器架构"
+  ]
+}

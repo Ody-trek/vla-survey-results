@@ -1,12 +1,13 @@
-# VLA与具身智能研究综述：从视觉-语言-动作模型到通用机器人
+# 多模态音频理解研究综述：从基础模型到音频大语言模型
 
 > 🤖 由 Claude Opus 4.6 自动生成 · 最后更新：2026-03-14
 
 本仓库收录 VLA（Vision-Language-Action）与具身智能领域的论文分析与自动综述，
-覆盖 **55 篇** arXiv 论文，使用 Claude Batches API 批量分析生成。
+覆盖 **107 篇** arXiv 论文，使用 Claude Batches API 批量分析生成。
 
 ## 📄 综述文档
 
+- [vla_survey_20260314_2316.md](surveys/vla_survey_20260314_2316.md)
 - [vla_survey_20260314_2020.md](surveys/vla_survey_20260314_2020.md)
 
 ## 📊 论文分析
