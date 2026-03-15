@@ -1,28 +1,27 @@
 {
   "arxiv_id": "2603.12249v1",
   "title_zh": "SciMDR：科学多模态文档推理的基准测试与推进",
-  "one_sentence_summary": "提出synthesize-and-reground框架构建科学多模态文档推理数据集SciMDR，提升模型跨模态文档理解能力。",
+  "one_sentence_summary": "提出合成-重定位框架构建科学多模态文档推理数据集与评估基准。",
   "key_contributions": [
-    "贡献1：提出synthesize-and-reground两阶段框架，平衡数据集的规模、忠实性和真实性",
-    "贡献2：构建SciMDR大规模训练数据集，包含300K带显式推理链的QA对，覆盖20K篇科学论文",
-    "贡献3：构建SciMDR-Eval专家标注基准，用于评估全文档级科学多模态理解能力"
+    "贡献1：提出synthesize-and-reground两阶段框架，解决科学多模态文档推理数据集在规模、忠实性和真实性之间的权衡问题",
+    "贡献2：构建SciMDR大规模训练数据集，包含跨2万篇科学论文的30万条带显式推理链的QA对",
+    "贡献3：构建SciMDR-Eval专家标注评估基准，用于评估全文科学工作流中的多模态理解能力"
   ],
-  "technical_approach": "该方法包含两个阶段：（1）Claim-Centric QA Synthesis，在聚焦的文档片段上生成忠实、独立的QA对及推理链，确保答案的准确性；（2）Document-Scale Regrounding，通过程序化方式将这些QA对重新嵌入到完整文档任务中，恢复真实的文档级复杂度。该框架巧妙地将局部忠实性生成与全局文档级推理复杂性结合，解决了大规模科学多模态数据集构建中规模、忠实性和真实性难以兼顾的问题。最终生成的数据涵盖跨模态（文本、图表、表格等）的复合推理任务。",
+  "technical_approach": "提出synthesize-and-reground框架，分为两个阶段：(1) Claim-Centric QA Synthesis（以论断为中心的QA合成），在聚焦的文档片段上生成忠实、独立的QA对及推理过程；(2) Document-Scale Regrounding（文档级重定位），通过编程方式将这些QA对重新嵌入到完整文档任务中，以确保任务具备真实的文档级复杂度。该框架在保证数据质量的同时实现大规模数据生成，支持跨模态（文本、图表、公式等）的复杂科学文档推理训练。",
   "datasets_and_benchmarks": [
     "SciMDR（300K QA训练集）",
-    "SciMDR-Eval（专家标注评估基准）",
-    "多个科学QA基准（用于下游评估）"
+    "SciMDR-Eval（专家标注评估基准）"
   ],
-  "key_results": "在SciMDR上微调的模型在多个科学QA基准上取得显著提升，尤其在需要复杂文档级推理的任务中表现突出，验证了synthesize-and-reground框架在提升多模态文档理解方面的有效性。",
-  "limitations": "主要面向科学论文领域，泛化到其他文档类型的能力未验证；依赖程序化regrounding可能引入分布偏差。",
-  "connections_to_vla": "该工作聚焦于视觉-语言多模态文档推理，与VLA模型中视觉-语言对齐和跨模态推理能力相关，其数据构建方法论（合成-再锚定）可为VLA训练数据的大规模构建提供参考，但不直接涉及动作生成和具身智能任务。",
-  "survey_theme": "音频-语言对齐与理解",
+  "key_results": "在SciMDR上微调的模型在多个科学QA基准上取得显著提升，尤其在需要复杂文档级推理的任务中表现突出，验证了synthesize-and-reground框架生成高质量训练数据的有效性。",
+  "limitations": "主要聚焦科学论文领域，泛化到其他多模态文档类型的能力未知；依赖合成数据流程可能引入系统性偏差。",
+  "connections_to_vla": "该工作属于多模态文档理解领域，与VLA/具身智能的直接关联较弱。但其在多模态推理链构建、跨模态理解方面的方法论可为VLA模型处理复杂多模态指令和长链推理提供参考，尤其是数据合成与质量保证的范式可迁移至具身智能数据构建。",
+  "survey_theme": "数据与基准",
   "importance_score": 2,
   "keywords": [
     "科学文档推理",
     "多模态QA",
     "数据合成",
-    "跨模态理解",
-    "基准测试"
+    "推理链",
+    "基准评测"
   ]
 }
